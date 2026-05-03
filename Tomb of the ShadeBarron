@@ -57,7 +57,7 @@ private static void StartCombat()
     Console.WriteLine("Welcome to Combat!!");
 
     string heroOne = "ZaRen";
-    string heroTwo = "Vron";
+    string heroTwo = "Had'Rou";
 
     int oneHP = 100;
     int twoHP = 100;
