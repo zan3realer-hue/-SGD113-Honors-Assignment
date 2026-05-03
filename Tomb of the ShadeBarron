@@ -5,6 +5,13 @@ private static void Main(string[] args)
 {
     _ = args; // use parameter to avoid IDE0060
 
+    GreetPlayer();
+    string selectedSword = ChooseSword();
+    StartCombat();
+}
+
+private static void GreetPlayer()
+{
     Console.WriteLine("Hello, yalls!");
     Console.WriteLine("What's your name?");
     string userName = Console.ReadLine() ?? "";
@@ -16,8 +23,10 @@ private static void Main(string[] args)
     else
     {
         Console.WriteLine("My name is different. But yours is neat as well.");
+    }
+}
 
-static void Main(string[] args)
+private static string ChooseSword()
 {
     string[] Swords = { "Katana", "Tachi", "Wakizashi", "Tanto", "Nagamaki", "Chokuto" };
 
@@ -34,47 +43,50 @@ static void Main(string[] args)
     {
         string selectedSword = Swords[choice - 1];
         Console.WriteLine($"\nYou have chosen the {selectedSword}!");
+        return selectedSword;
     }
     else
     {
         Console.WriteLine("Invalid choice. Please select a number between 1 and 6.");
+        return "Katana"; // default choice
     }
-
-    Console.ReadLine();
 }
 
-Console.WriteLine("Welcome to Combat!!");
-
-string heroOne = "ZaRen"; // Our two heroes
-string heroTwo = "Vron";
-
-int oneHP = 100;  // Their Life;
-int twoHP = 100;
-
-bool bothAlive = true; // loop control
-
-int oneDamage = 20; // damage per hit
-int twoDamage = 20;
-
-Console.WriteLine("Let Thy Epic Battle...BEGIN!");
-
-while (bothAlive) // combat loop (removed stray semicolon)
+private static void StartCombat()
 {
-    twoHP -= oneDamage; // hero one hits hero two
-    Console.WriteLine($"{heroOne} hits {heroTwo} for {oneDamage} damage! {heroTwo} has {twoHP} HP left.");
-    if (twoHP <= 0) // check if hero two is defeated
-    {
-        Console.WriteLine($"{heroTwo} has been defeated! {heroOne} wins!");
-        bothAlive = false;
-        break;
-    }
-    oneHP -= twoDamage; // hero two hits hero one
-    Console.WriteLine($"{heroTwo} hits {heroOne} for {twoDamage} damage! {heroOne} has {oneHP} HP left.");
-    if (oneHP <= 0) // check if hero one is defeated
-    {
-        Console.WriteLine($"{heroOne} has been sent to the shadows of Valhalla! {heroTwo} wins!");
-        bothAlive = false;
-        break;
+    Console.WriteLine("Welcome to Combat!!");
 
+    string heroOne = "ZaRen";
+    string heroTwo = "Vron";
+
+    int oneHP = 100;
+    int twoHP = 100;
+
+    bool bothAlive = true;
+
+    int oneDamage = 20;
+    int twoDamage = 20;
+
+    Console.WriteLine("Let Thy Epic Battle...BEGIN!");
+
+    while (bothAlive)
+    {
+        twoHP -= oneDamage;
+        Console.WriteLine($"{heroOne} hits {heroTwo} for {oneDamage} damage! {heroTwo} has {twoHP} HP left.");
+        if (twoHP <= 0)
+        {
+            Console.WriteLine($"{heroTwo} has been defeated! {heroOne} wins!");
+            bothAlive = false;
+            break;
+        }
+
+        oneHP -= twoDamage;
+        Console.WriteLine($"{heroTwo} hits {heroOne} for {twoDamage} damage! {heroOne} has {oneHP} HP left.");
+        if (oneHP <= 0)
+        {
+            Console.WriteLine($"{heroOne} has been sent to the shadows of Valhalla! {heroTwo} wins!");
+            bothAlive = false;
+            break;
+        }
     }
 }
