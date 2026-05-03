@@ -1,3 +1,80 @@
 Tomb of the ShadeBarron is a simple game revolving around going throu rooms in a tomb to try and attain treasure whilst avoiding getting attacked by a tomb guardian named Had'Rou.
 I used MS Copilot to help refine my code, as well as to help find coding outcomes from things I think of.
 
+private static void Main(string[] args)
+{
+    _ = args; // use parameter to avoid IDE0060
+
+    Console.WriteLine("Hello, yalls!");
+    Console.WriteLine("What's your name?");
+    string userName = Console.ReadLine() ?? "";
+
+    if (userName == "ZaRen")
+    {
+        Console.WriteLine("My name is ZaRen, too!!");
+    }
+    else
+    {
+        Console.WriteLine("My name is different. But yours is neat as well.");
+
+static void Main(string[] args)
+{
+    string[] Swords = { "Katana", "Tachi", "Wakizashi", "Tanto", "Nagamaki", "Chokuto" };
+
+    Console.WriteLine("Pick your blade:");
+    for (int i = 0; i < Swords.Length; i++)
+    {
+        Console.WriteLine($"{i + 1}. {Swords[i]}");
+    }
+
+    Console.Write("\nEnter your choice (1-6): ");
+    string input = Console.ReadLine();
+
+    if (int.TryParse(input, out int choice) && choice >= 1 && choice <= Swords.Length)
+    {
+        string selectedSword = Swords[choice - 1];
+        Console.WriteLine($"\nYou have chosen the {selectedSword}!");
+    }
+    else
+    {
+        Console.WriteLine("Invalid choice. Please select a number between 1 and 6.");
+    }
+
+    Console.ReadLine();
+}
+
+Console.WriteLine("Welcome to Combat!!");
+
+string heroOne = "ZaRen"; // Our two heroes
+string heroTwo = "Vron";
+
+int oneHP = 100;  // Their Life;
+int twoHP = 100;
+
+bool bothAlive = true; // loop control
+
+int oneDamage = 20; // damage per hit
+int twoDamage = 20;
+
+Console.WriteLine("Let Thy Epic Battle...BEGIN!");
+
+while (bothAlive) // combat loop (removed stray semicolon)
+{
+    twoHP -= oneDamage; // hero one hits hero two
+    Console.WriteLine($"{heroOne} hits {heroTwo} for {oneDamage} damage! {heroTwo} has {twoHP} HP left.");
+    if (twoHP <= 0) // check if hero two is defeated
+    {
+        Console.WriteLine($"{heroTwo} has been defeated! {heroOne} wins!");
+        bothAlive = false;
+        break;
+    }
+    oneHP -= twoDamage; // hero two hits hero one
+    Console.WriteLine($"{heroTwo} hits {heroOne} for {twoDamage} damage! {heroOne} has {oneHP} HP left.");
+    if (oneHP <= 0) // check if hero one is defeated
+    {
+        Console.WriteLine($"{heroOne} has been sent to the shadows of Valhalla! {heroTwo} wins!");
+        bothAlive = false;
+        break;
+
+    }
+}
